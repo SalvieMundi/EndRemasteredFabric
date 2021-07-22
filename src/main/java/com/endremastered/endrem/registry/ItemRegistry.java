@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.registry.Registry;
 
 public class ItemRegistry {
-    // Structure Eyes
+    /* Chests Eyes */
     public static final Item BLACK_EYE = new EyeItem();
     public static final Item COLD_EYE = new EyeItem();
     public static final Item CORRUPTED_EYE = new EyeItem();
@@ -16,14 +16,18 @@ public class ItemRegistry {
     public static final Item OLD_EYE = new EyeItem();
     public static final Item ROGUE_EYE = new EyeItem();
 
-    // Mob Eyes
+    /* Entities Eyes */
     public static final Item GUARDIAN_EYE = new EyeItem();
     public static final Item MAGICAL_EYE = new EyeItem();
     public static final Item WITCH_EYE = new EyeItem();
     public static final Item WITHER_EYE = new EyeItem();
 
-    // Other Eyes
+    /* Craftable Eyes */
     public static final Item END_CRYSTAL_EYE = new EyeItem();
+
+    /* Miscellaneous */
+    public static final Item WITCH_PUPIL = new Item(new FabricItemSettings().group(EndRemastered.ENDREM_TAB));
+    public static final Item END_CRYSTAL_FRAGMENT = new Item(new FabricItemSettings().group(EndRemastered.ENDREM_TAB));
 
     public static void registerItem(String itemName, Item item) {
         Registry.register(Registry.ITEM, EndRemastered.createIdentifier(itemName), item);
@@ -44,5 +48,8 @@ public class ItemRegistry {
         registerItem("wither_eye", WITHER_EYE);
 
         registerItem("end_crystal_eye", END_CRYSTAL_EYE);
+
+        registerItem("witch_pupil", WITCH_PUPIL);
+        registerItem("end_crystal_fragment", WITCH_PUPIL);
     }
 }

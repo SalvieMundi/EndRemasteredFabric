@@ -14,11 +14,11 @@ import java.util.List;
 
 public class EyeItem extends Item {
     public EyeItem() {
-        super(new FabricItemSettings().fireproof().maxCount(16).rarity(Rarity.EPIC).group(EndRemastered.ITEM_GROUP));
+        super(new FabricItemSettings().fireproof().maxCount(16).rarity(Rarity.EPIC).group(EndRemastered.ENDREM_TAB));
     }
 
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
-        tooltip.add(new TranslatableText(String.format("item.endrem.%s.description", this.asItem().getName().getString())));
+        tooltip.add(new TranslatableText(String.format("item.endrem.%s.description", this.asItem().toString())));
     }
 }
