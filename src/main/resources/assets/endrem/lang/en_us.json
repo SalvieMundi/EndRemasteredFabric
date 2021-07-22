@@ -70,7 +70,7 @@
   "block.endrem.end_crystal_ore": "End Crystal Ore",
   "block.endrem.end_crystal_block": "End Crystal Block",
 
-  "itemGroup.endremTab": "End Remastered",
+  "itemGroup.endrem.endrem_tab": "End Remastered",
 
   "block.portal_open_sound": "Portal Opening",
   "block.portal_open_sound.sub": "Portal Opening",
