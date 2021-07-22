@@ -50,6 +50,6 @@ public class ItemRegistry {
         registerItem("end_crystal_eye", END_CRYSTAL_EYE);
 
         registerItem("witch_pupil", WITCH_PUPIL);
-        registerItem("end_crystal_fragment", WITCH_PUPIL);
+        registerItem("end_crystal_fragment", END_CRYSTAL_FRAGMENT);
     }
 }
