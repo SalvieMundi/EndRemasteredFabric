@@ -3,6 +3,7 @@ package com.endremastered.endrem;
 import com.endremastered.endrem.registry.BlockRegistry;
 import com.endremastered.endrem.registry.ItemRegistry;
 import com.endremastered.endrem.util.LootInjection;
+import com.endremastered.endrem.world.gen.OreSpawnHandler;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.block.Blocks;
@@ -25,5 +26,6 @@ public class EndRemastered implements ModInitializer {
 		ItemRegistry.init();
 		BlockRegistry.init();
 		LootInjection.init();
+		OreSpawnHandler.Init();
 	}
 }
