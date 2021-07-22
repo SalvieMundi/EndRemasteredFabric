@@ -55,7 +55,7 @@ public enum FrameProperties implements StringIdentifiable {
         }
     }
 
-    public static FrameProperties asItemFrameProperty(Item eye) {
+    public static FrameProperties getFrameProperty(Item eye) {
         FrameProperties frameProperties = FrameProperties.EMPTY;
 
         if (eye == ItemRegistry.OLD_EYE.asItem()) {

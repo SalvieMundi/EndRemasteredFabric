@@ -18,6 +18,8 @@ import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
 
 public class OreSpawnHandler {
+
+    /* TODO: make an actual Rule with the three blocks */
     
     private static ConfiguredFeature<?, ?> BLACKSTONE = Feature.ORE
             .configure(new OreFeatureConfig(
