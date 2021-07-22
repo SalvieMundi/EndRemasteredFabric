@@ -83,7 +83,7 @@ public class AncientPortalFrame extends Block {
 
     public static BlockPattern getCompletedFramePattern() {
         if (COMPLETED_FRAME == null) {
-            COMPLETED_FRAME = BlockPatternBuilder.start().aisle("?vvv?", ">???<", ">???<", ">???<", "?^^^?").where('?', CachedBlockPosition.matchesBlockState(BlockStatePredicate.ANY)).where('^', CachedBlockPosition.matchesBlockState(BlockStatePredicate.forBlock(Blocks.END_PORTAL_FRAME).with(EYE, Predicates.equalTo(true)).with(FACING, Predicates.equalTo(Direction.SOUTH)))).where('>', CachedBlockPosition.matchesBlockState(BlockStatePredicate.forBlock(Blocks.END_PORTAL_FRAME).with(EYE, Predicates.equalTo(true)).with(FACING, Predicates.equalTo(Direction.WEST)))).where('v', CachedBlockPosition.matchesBlockState(BlockStatePredicate.forBlock(Blocks.END_PORTAL_FRAME).with(EYE, Predicates.equalTo(true)).with(FACING, Predicates.equalTo(Direction.NORTH)))).where('<', CachedBlockPosition.matchesBlockState(BlockStatePredicate.forBlock(Blocks.END_PORTAL_FRAME).with(EYE, Predicates.equalTo(true)).with(FACING, Predicates.equalTo(Direction.EAST)))).build();
+            COMPLETED_FRAME = BlockPatternBuilder.start().aisle("?vvv?", ">???<", ">???<", ">???<", "?^^^?").where('?', CachedBlockPosition.matchesBlockState(BlockStatePredicate.ANY)).where('^', CachedBlockPosition.matchesBlockState(BlockStatePredicate.forBlock(BlockRegistry.ANCIENT_PORTAL_FRAME).with(EYE, Predicates.not(Predicates.equalTo(FrameProperties.EMPTY))).with(FACING, Predicates.equalTo(Direction.SOUTH)))).where('>', CachedBlockPosition.matchesBlockState(BlockStatePredicate.forBlock(BlockRegistry.ANCIENT_PORTAL_FRAME).with(EYE, Predicates.not(Predicates.equalTo(FrameProperties.EMPTY))).with(FACING, Predicates.equalTo(Direction.WEST)))).where('v', CachedBlockPosition.matchesBlockState(BlockStatePredicate.forBlock(BlockRegistry.ANCIENT_PORTAL_FRAME).with(EYE, Predicates.not(Predicates.equalTo(FrameProperties.EMPTY))).with(FACING, Predicates.equalTo(Direction.NORTH)))).where('<', CachedBlockPosition.matchesBlockState(BlockStatePredicate.forBlock(BlockRegistry.ANCIENT_PORTAL_FRAME).with(EYE, Predicates.not(Predicates.equalTo(FrameProperties.EMPTY))).with(FACING, Predicates.equalTo(Direction.EAST)))).build();
         }
 
         return COMPLETED_FRAME;
@@ -97,14 +97,13 @@ public class AncientPortalFrame extends Block {
     public static boolean IsFrameAlreadyUsed(World worldIn, BlockState frameState, BlockPos pos) {
         for (BlockPos blockPosMutable :
                 BlockPos.iterate(pos.add(4, 0, 4), pos.add(-4, 0, -4))) {
-
-            if(worldIn.getBlockState(blockPosMutable).getBlock().getDefaultState() != null && worldIn.getBlockState(blockPosMutable).getBlock().asItem() == BlockRegistry.ANCIENT_PORTAL_FRAME.asItem()) {
-                if (worldIn.getBlockState(blockPosMutable).getBlock().getDefaultState().get(AncientPortalFrame.EYE) == frameState.get(AncientPortalFrame.EYE)) {
+                System.out.println("Detect blocks");
+            if(worldIn.getBlockState(blockPosMutable) != null && worldIn.getBlockState(blockPosMutable).getBlock() == BlockRegistry.ANCIENT_PORTAL_FRAME) {
+                if (worldIn.getBlockState(blockPosMutable).get(AncientPortalFrame.EYE) == frameState.get(AncientPortalFrame.EYE)) {
                     return true;
                 }
             }
         }
         return false;
     }
-
 }
