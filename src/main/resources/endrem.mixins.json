@@ -4,6 +4,8 @@
   "package": "com.endremastered.endrem.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "EyeOfEnderEntityAccessorMixin",
+    "PlayerEntityAccessorMixin"
   ],
   "client": [
     "ExampleMixin"
