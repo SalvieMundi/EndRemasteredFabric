@@ -7,7 +7,7 @@ import com.endremastered.endrem.util.LootInjection;
 import com.endremastered.endrem.world.gen.OreSpawnHandler;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.minecraft.block.Blocks;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -20,7 +20,7 @@ public class EndRemastered implements ModInitializer {
 	public static final String MOD_ID = "endrem";
 	public static final ItemGroup ENDREM_TAB = FabricItemGroupBuilder.build(
 			createIdentifier("endrem_tab"),
-			() -> new ItemStack(Blocks.END_PORTAL_FRAME));
+			() -> new ItemStack(ItemRegistry.ROGUE_EYE));
 
 	public static Identifier createIdentifier(String name) {
 		return new Identifier(EndRemastered.MOD_ID, name);
@@ -33,5 +33,11 @@ public class EndRemastered implements ModInitializer {
 		LootInjection.init();
 		OreSpawnHandler.Init();
 		ConfigHandler.load();
+
+		/* Reloads the Configs When the Server Starts */
+		ServerLifecycleEvents.SERVER_STARTED.register(server -> {
+			System.out.println("PREPARING FOR RELOAD");
+			ConfigHandler.load();
+		});
 	}
 }

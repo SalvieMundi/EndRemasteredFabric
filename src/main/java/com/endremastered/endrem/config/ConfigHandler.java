@@ -83,7 +83,5 @@ public class ConfigHandler {
                 this.eyesLocateStructure = eyesLocateStructure;
             }
         }
-
-
     }
 }
