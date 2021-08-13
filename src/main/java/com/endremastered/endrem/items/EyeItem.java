@@ -47,6 +47,7 @@ public class EyeItem extends Item {
         tooltip.add(new TranslatableText(String.format("item.endrem.%s.description", this.asItem().toString())));
     }
 
+
     /* Action when used on a frame */
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
@@ -111,12 +112,10 @@ public class EyeItem extends Item {
         BlockHitResult hitResult = raycast(worldIn, playerIn, RaycastContext.FluidHandling.NONE);
         boolean lookingAtFrame = false;
 
-
         BlockState state = worldIn.getBlockState(hitResult.getBlockPos());  //IDK IF IT STILL WORKS
         if (state.isOf(BlockRegistry.ANCIENT_PORTAL_FRAME)) {
             lookingAtFrame = true;
         }
-
 
         if (lookingAtFrame) {
             return TypedActionResult.pass(itemstack);

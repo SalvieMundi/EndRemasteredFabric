@@ -1,11 +1,9 @@
 package com.endremastered.endrem.util;
 
-import com.endremastered.endrem.EndRemastered;
 import net.fabricmc.loader.FabricLoader;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.StructureFeature;
-import org.spongepowered.asm.mixin.transformer.Config;
 
 
 public class StructureLocator {

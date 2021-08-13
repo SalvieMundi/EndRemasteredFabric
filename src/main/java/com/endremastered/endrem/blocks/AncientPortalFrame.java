@@ -93,7 +93,7 @@ public class AncientPortalFrame extends Block {
         return false;
     }
 
-    /* Check if an eye have already been used to light up the portal */ // Not sure it works
+    /* Check if an eye have already been used to light up the portal */
     public static boolean IsFrameAlreadyUsed(World worldIn, BlockState frameState, BlockPos pos) {
         for (BlockPos blockPosMutable :
                 BlockPos.iterate(pos.add(4, 0, 4), pos.add(-4, 0, -4))) {
