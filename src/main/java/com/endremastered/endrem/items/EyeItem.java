@@ -2,10 +2,12 @@ package com.endremastered.endrem.items;
 
 import com.endremastered.endrem.EndRemastered;
 import com.endremastered.endrem.blocks.AncientPortalFrame;
+import com.endremastered.endrem.config.ConfigHandler;
 import com.endremastered.endrem.mixin.EyeOfEnderEntityAccessorMixin;
 import com.endremastered.endrem.mixin.PlayerEntityAccessorMixin;
 import com.endremastered.endrem.properties.FrameProperties;
 import com.endremastered.endrem.registry.BlockRegistry;
+import com.endremastered.endrem.util.StructureLocator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.*;
@@ -122,7 +124,7 @@ public class EyeItem extends Item {
         } else {
             playerIn.setCurrentHand(handIn);
             if (worldIn instanceof ServerWorld) {
-                BlockPos blockpos = ((ServerWorld) worldIn).getChunkManager().getChunkGenerator().locateStructure((ServerWorld) worldIn, StructureFeature.STRONGHOLD, playerIn.getBlockPos(), 100, false);
+                BlockPos blockpos = ((ServerWorld) worldIn).getChunkManager().getChunkGenerator().locateStructure((ServerWorld) worldIn, StructureLocator.getStructureToLocate(ConfigHandler.eyesLocateStructure.toLowerCase()), playerIn.getBlockPos(), 100, false);
                 if (blockpos != null) {
                     EyeOfEnderEntity eyeOfEnderEntity = new EyeOfEnderEntity(worldIn, playerIn.getX(), playerIn.getBodyY(0.5D), playerIn.getZ());
                     eyeOfEnderEntity.setItem(itemstack);

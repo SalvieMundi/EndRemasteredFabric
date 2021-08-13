@@ -17,7 +17,8 @@ public class ConfigHandler {
     private static Path configFilePath;
     private static Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
-    public static boolean disableEyeOfEnder = true;
+    public static boolean disableEyeOfEnder = false;
+    public static String eyesLocateStructure = "minecraft:stronghold";
 
 
     public static void load() {
@@ -29,6 +30,7 @@ public class ConfigHandler {
                 Data data = gson.fromJson(reader, Data.class);
 
                 disableEyeOfEnder = data.common.disableEyeOfEnder;
+                eyesLocateStructure = data.common.eyesLocateStructure;
                 reader.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -40,7 +42,7 @@ public class ConfigHandler {
     public static void save() {
         try {
             Writer writer = Files.newBufferedWriter(getFilePath());
-            Data data = new Data(new Data.Common(disableEyeOfEnder));
+            Data data = new Data(new Data.Common(disableEyeOfEnder, eyesLocateStructure));
             gson.toJson(data, writer);
             writer.close();
         } catch (IOException e) {
@@ -67,13 +69,18 @@ public class ConfigHandler {
             private final String disableEyeOfEnderComment = "Enable/Disable usage of Ender Eyes";
             private final boolean disableEyeOfEnder;
 
+            private final String eyesLocateStructureComment = "Changes the structure that End Remastered eyes track (set value to \"null\" to disable)";
+            private final String eyesLocateStructure;
+
 
             private Common() {
-                disableEyeOfEnder = true;
+                disableEyeOfEnder = false;
+                eyesLocateStructure = "minecraft:stronghold";
             }
 
-            private Common(boolean disableEyeOfEnder) {
+            private Common(boolean disableEyeOfEnder, String eyesLocateStructure) {
                 this.disableEyeOfEnder = disableEyeOfEnder;
+                this.eyesLocateStructure = eyesLocateStructure;
             }
         }
 
