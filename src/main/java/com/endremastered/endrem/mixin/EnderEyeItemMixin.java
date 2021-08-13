@@ -1,5 +1,6 @@
 package com.endremastered.endrem.mixin;
 
+import com.endremastered.endrem.config.ConfigHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.EnderEyeItem;
 import net.minecraft.item.ItemStack;
@@ -21,14 +22,19 @@ public class EnderEyeItemMixin {
         at = @At(value = "HEAD"),
         cancellable = true)
     private void DisableUsingEnderEyes(ItemUsageContext context, CallbackInfoReturnable<ActionResult> cir) {
-        cir.setReturnValue(ActionResult.PASS);
+
+        if (ConfigHandler.disableEyeOfEnder) {
+            cir.setReturnValue(ActionResult.PASS);
+        }
     }
 
     @Inject(method = "use",
         at = @At(value = "HEAD"),
         cancellable = true)
     private void DisableThrowingEnderEyes(World world, PlayerEntity user, Hand hand, CallbackInfoReturnable<TypedActionResult<ItemStack>> cir) {
-        ItemStack itemStack = user.getStackInHand(hand);
-        cir.setReturnValue(TypedActionResult.pass(itemStack));
+        if (ConfigHandler.disableEyeOfEnder) {
+            ItemStack itemStack = user.getStackInHand(hand);
+            cir.setReturnValue(TypedActionResult.pass(itemStack));
+        }
     }
 }
