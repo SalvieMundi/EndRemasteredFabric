@@ -4,18 +4,31 @@ import com.endremastered.endrem.EndRemastered;
 import com.endremastered.endrem.blocks.AncientPortalFrame;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.MapColor;
-import net.minecraft.block.Material;
+import net.minecraft.block.*;
+import net.minecraft.data.server.BlockTagsProvider;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.tag.BlockTags;
+import net.minecraft.tag.ItemTags;
+import net.minecraft.tag.Tag;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.Registry;
+
+import javax.swing.text.html.HTML;
 
 public class BlockRegistry {
 
     public static final Block ANCIENT_PORTAL_FRAME = new AncientPortalFrame(FabricBlockSettings.of(Material.METAL).strength(-1.0F, 3600000.0F).dropsNothing());
-    public static final Block END_CRYSTAL_ORE = new AncientPortalFrame(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).requiresTool().strength(50.0F, 1200.0F).luminance((state) -> {
-        return 10;}));
+    public static final Block END_CRYSTAL_ORE = new OreBlock(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(30.0F, 1200.0F), UniformIntProvider.create(3, 7));
+
+
+    public static void init() {
+        registerBlock("ancient_portal_frame", ANCIENT_PORTAL_FRAME);
+        registerBlockItem("ancient_portal_frame", new BlockItem(ANCIENT_PORTAL_FRAME, new FabricItemSettings().group(EndRemastered.ENDREM_TAB)));
+
+        registerBlock("end_crystal_ore", END_CRYSTAL_ORE);
+        registerBlockItem("end_crystal_ore", new BlockItem(END_CRYSTAL_ORE, new FabricItemSettings().group(EndRemastered.ENDREM_TAB)));
+    }
 
     public static void registerBlock(String blockName, Block block) {
         Registry.register(Registry.BLOCK, EndRemastered.createIdentifier(blockName), block);
@@ -25,11 +38,7 @@ public class BlockRegistry {
         Registry.register(Registry.ITEM, EndRemastered.createIdentifier(blockItemName), blockItem);
     }
 
-    public static void init() {
-        registerBlock("ancient_portal_frame", ANCIENT_PORTAL_FRAME);
-        registerBlockItem("ancient_portal_frame", new BlockItem(ANCIENT_PORTAL_FRAME, new FabricItemSettings().group(EndRemastered.ENDREM_TAB)));
-
-        registerBlock("end_crystal_ore", END_CRYSTAL_ORE);
-        registerBlockItem("end_crystal_ore", new BlockItem(END_CRYSTAL_ORE, new FabricItemSettings().group(EndRemastered.ENDREM_TAB)));
-    }
+//    private static Block register(String id, Block block) {
+//        return Registry.register(Registry.BLOCK, EndRemastered.createIdentifier(id), block);
+//    }
 }
