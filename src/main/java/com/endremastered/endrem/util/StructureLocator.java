@@ -1,6 +1,6 @@
 package com.endremastered.endrem.util;
 
-import net.fabricmc.loader.FabricLoader;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.StructureFeature;
@@ -8,11 +8,10 @@ import net.minecraft.world.gen.feature.StructureFeature;
 
 public class StructureLocator {
     public static StructureFeature<?> getStructureToLocate(String structureID) {
-      //  Config.setup(FMLPaths.CONFIGDIR.get().resolve(EndRemastered.MOD_ID + ".toml")); //dafuck
         String mod_id = structureID.split(":")[0];
 
         // Checks if mod is loaded
-        if (FabricLoader.INSTANCE.isModLoaded(mod_id)) {
+        if (FabricLoader.getInstance().isModLoaded(mod_id)) {
             Identifier resourceLocation = new Identifier(structureID);
 
             // Checks if structure exists
