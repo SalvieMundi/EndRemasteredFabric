@@ -6,10 +6,13 @@ import java.io.Reader;
 import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
+import com.endremastered.endrem.util.StructureLocator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 
 public class ConfigHandler {
@@ -17,11 +20,12 @@ public class ConfigHandler {
     private static Path configFilePath;
     private static Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
-    public static boolean disableEyeOfEnder = false;
-    public static String eyesLocateStructure = "minecraft:stronghold";
+    public static boolean disableEyeOfEnder = true;
+    public static String eyesLocateStructure = "";
 
 
     public static void load() {
+
         Reader reader;
         if(getFilePath().toFile().exists()) {
             try {
@@ -72,9 +76,8 @@ public class ConfigHandler {
             private final String eyesLocateStructureComment = "Changes the structure that End Remastered eyes track (set value to \"null\" to disable)";
             private final String eyesLocateStructure;
 
-
             private Common() {
-                disableEyeOfEnder = false;
+                disableEyeOfEnder = true;
                 eyesLocateStructure = "minecraft:stronghold";
             }
 
@@ -82,6 +85,16 @@ public class ConfigHandler {
                 this.disableEyeOfEnder = disableEyeOfEnder;
                 this.eyesLocateStructure = eyesLocateStructure;
             }
+        }
+    }
+
+    public static void SetEyesLocateStructure() {
+
+        if (Registry.STRUCTURE_FEATURE.containsId(new Identifier("betterstrongholds:stronghold"))) {
+            eyesLocateStructure = "betterstrongholds:stronghold";
+        }
+        else {
+            eyesLocateStructure = "minecraft:stronghold";
         }
     }
 }

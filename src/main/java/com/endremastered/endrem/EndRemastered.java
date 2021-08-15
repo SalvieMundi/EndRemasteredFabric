@@ -32,12 +32,13 @@ public class EndRemastered implements ModInitializer {
 		BlockRegistry.init();
 		LootInjection.init();
 		OreSpawnHandler.Init();
+		ConfigHandler.SetEyesLocateStructure();
 		ConfigHandler.load();
-
 		/* Reloads the Configs When the Server Starts */
 		ServerLifecycleEvents.SERVER_STARTED.register(server -> {
 			System.out.println("PREPARING FOR RELOAD");
 			ConfigHandler.load();
 		});
+
 	}
 }
