@@ -7,7 +7,6 @@ import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import com.endremastered.endrem.util.StructureLocator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.fabricmc.loader.api.FabricLoader;
@@ -90,7 +89,7 @@ public class ConfigHandler {
 
     public static void SetEyesLocateStructure() {
 
-        if (Registry.STRUCTURE_FEATURE.containsId(new Identifier("betterstrongholds:stronghold"))) {
+        if (FabricLoader.getInstance().isModLoaded("betterstrongholds")) {
             eyesLocateStructure = "betterstrongholds:stronghold";
         }
         else {
