@@ -13,7 +13,8 @@
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/endremastered",
-    "sources": "https://gitlab.com/endrem/fabric-endrem"
+    "sources": "https://gitlab.com/endrem/fabric-endrem",
+    "issues": "https://gitlab.com/endrem/end-remastered-fabric/-/issues"
   },
 
   "license": "CC0-1.0",
@@ -34,8 +35,5 @@
     "fabric": "*",
     "minecraft": "1.17.x",
     "java": ">=16"
-  },
-  "suggests": {
-    "another-mod": "*"
   }
 }
