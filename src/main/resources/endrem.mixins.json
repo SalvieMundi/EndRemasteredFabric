@@ -5,8 +5,12 @@
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "EnderEyeItemMixin",
-    "EyeOfEnderEntityAccessorMixin",
-    "PlayerEntityAccessorMixin"
+    "accessor.EyeOfEnderEntityAccessorMixin",
+    "accessor.PlayerEntityAccessorMixin",
+    "accessor.StructuresConfigAccessorMixin",
+    "world.ChunkGeneratorMixin",
+    "world.NoiseChunkGeneratorMixin",
+    "world.NoLavaInStructuresMixin"
   ],
   "client": [
   ],

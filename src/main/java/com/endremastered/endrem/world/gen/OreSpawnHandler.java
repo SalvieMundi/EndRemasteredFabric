@@ -44,7 +44,7 @@ public class OreSpawnHandler {
             .spreadHorizontally()
             .repeat(20); // Number of veins per chunk
 
-   public static void Init() {
+   public static void init() {
        RegistryKey<ConfiguredFeature<?, ?>> end_crystal_ore_gen_b = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY,
                new Identifier("endrem", "end_crystal_ore_gen_b"));
        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, end_crystal_ore_gen_b.getValue(), END_CRYSTAL_ORE_GEN_BLACKSTONE);

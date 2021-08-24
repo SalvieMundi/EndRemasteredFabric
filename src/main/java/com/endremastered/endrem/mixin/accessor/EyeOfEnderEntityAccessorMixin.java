@@ -1,4 +1,4 @@
-package com.endremastered.endrem.mixin;
+package com.endremastered.endrem.mixin.accessor;
 
 import net.minecraft.entity.EyeOfEnderEntity;
 import org.spongepowered.asm.mixin.Mixin;

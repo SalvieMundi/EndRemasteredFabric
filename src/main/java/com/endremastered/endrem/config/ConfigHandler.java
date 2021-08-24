@@ -10,8 +10,6 @@ import java.nio.file.Path;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 
 public class ConfigHandler {
@@ -19,9 +17,10 @@ public class ConfigHandler {
     private static Path configFilePath;
     private static Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
-    public static boolean disableEyeOfEnder = true;
-    public static String eyesLocateStructure = "";
-
+    public static boolean DISABLE_STRONGHOLD = true;
+    public static boolean DISABLE_EYE_OF_ENDER = true;
+    public static String EYES_LOCATE_STRUCTURE = "";
+    public static String MAP_LOCATES_STRUCTURE = "endrem:end_castle";
 
     public static void load() {
 
@@ -32,8 +31,10 @@ public class ConfigHandler {
 
                 Data data = gson.fromJson(reader, Data.class);
 
-                disableEyeOfEnder = data.common.disableEyeOfEnder;
-                eyesLocateStructure = data.common.eyesLocateStructure;
+                DISABLE_STRONGHOLD = data.common.DISABLE_STRONGHOLD;
+                DISABLE_EYE_OF_ENDER = data.common.DISABLE_EYE_OF_ENDER;
+                EYES_LOCATE_STRUCTURE = data.common.EYES_LOCATE_STRUCTURE;
+                MAP_LOCATES_STRUCTURE = data.common.MAP_LOCATES_STRUCTURE;
                 reader.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -45,7 +46,7 @@ public class ConfigHandler {
     public static void save() {
         try {
             Writer writer = Files.newBufferedWriter(getFilePath());
-            Data data = new Data(new Data.Common(disableEyeOfEnder, eyesLocateStructure));
+            Data data = new Data(new Data.Common(DISABLE_STRONGHOLD, DISABLE_EYE_OF_ENDER, EYES_LOCATE_STRUCTURE, MAP_LOCATES_STRUCTURE));
             gson.toJson(data, writer);
             writer.close();
         } catch (IOException e) {
@@ -69,20 +70,31 @@ public class ConfigHandler {
         }
 
         private static class Common {
+            private final String disableStrongholdComment = "Enable/Disable the Stronghold";
+            private final boolean DISABLE_STRONGHOLD;
+
             private final String disableEyeOfEnderComment = "Enable/Disable usage of Ender Eyes";
-            private final boolean disableEyeOfEnder;
+            private final boolean DISABLE_EYE_OF_ENDER;
 
             private final String eyesLocateStructureComment = "Changes the structure that End Remastered eyes track (set value to \"null\" to disable)";
-            private final String eyesLocateStructure;
+            private final String EYES_LOCATE_STRUCTURE;
+
+            private final String mapLocateStructureComment = "Changes the structure that End Remastered map locate (set value to \"null\" to disable)";
+
+            private final String MAP_LOCATES_STRUCTURE;
 
             private Common() {
-                disableEyeOfEnder = true;
-                eyesLocateStructure = "minecraft:stronghold";
+                DISABLE_STRONGHOLD = true;
+                DISABLE_EYE_OF_ENDER = true;
+                EYES_LOCATE_STRUCTURE = "minecraft:stronghold";
+                MAP_LOCATES_STRUCTURE = "endrem:end_castle";
             }
 
-            private Common(boolean disableEyeOfEnder, String eyesLocateStructure) {
-                this.disableEyeOfEnder = disableEyeOfEnder;
-                this.eyesLocateStructure = eyesLocateStructure;
+            private Common(boolean DISABLE_STRONGHOLD, boolean DISABLE_EYE_OF_ENDER, String EYES_LOCATE_STRUCTURE, String MAP_LOCATES_STRUCTURE) {
+                this.DISABLE_STRONGHOLD = DISABLE_STRONGHOLD;
+                this.DISABLE_EYE_OF_ENDER = DISABLE_EYE_OF_ENDER;
+                this.EYES_LOCATE_STRUCTURE = EYES_LOCATE_STRUCTURE;
+                this.MAP_LOCATES_STRUCTURE = MAP_LOCATES_STRUCTURE;
             }
         }
     }
@@ -90,10 +102,10 @@ public class ConfigHandler {
     public static void SetEyesLocateStructure() {
 
         if (FabricLoader.getInstance().isModLoaded("betterstrongholds")) {
-            eyesLocateStructure = "betterstrongholds:stronghold";
+            EYES_LOCATE_STRUCTURE = "betterstrongholds:stronghold";
         }
         else {
-            eyesLocateStructure = "minecraft:stronghold";
+            EYES_LOCATE_STRUCTURE = "minecraft:stronghold";
         }
     }
 }

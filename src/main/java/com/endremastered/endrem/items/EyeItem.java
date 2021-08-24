@@ -3,8 +3,8 @@ package com.endremastered.endrem.items;
 import com.endremastered.endrem.EndRemastered;
 import com.endremastered.endrem.blocks.AncientPortalFrame;
 import com.endremastered.endrem.config.ConfigHandler;
-import com.endremastered.endrem.mixin.EyeOfEnderEntityAccessorMixin;
-import com.endremastered.endrem.mixin.PlayerEntityAccessorMixin;
+import com.endremastered.endrem.mixin.accessor.EyeOfEnderEntityAccessorMixin;
+import com.endremastered.endrem.mixin.accessor.PlayerEntityAccessorMixin;
 import com.endremastered.endrem.properties.FrameProperties;
 import com.endremastered.endrem.registry.BlockRegistry;
 import com.endremastered.endrem.util.StructureLocator;
@@ -25,6 +25,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.structure.MineshaftGenerator;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
@@ -35,7 +36,6 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.StructureFeature;
 
 import java.util.List;
 
@@ -48,7 +48,6 @@ public class EyeItem extends Item {
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
         tooltip.add(new TranslatableText(String.format("item.endrem.%s.description", this.asItem().toString())));
     }
-
 
     /* Action when used on a frame */
     @Override
@@ -124,7 +123,7 @@ public class EyeItem extends Item {
         } else {
             playerIn.setCurrentHand(handIn);
             if (worldIn instanceof ServerWorld) {
-                BlockPos blockpos = ((ServerWorld) worldIn).getChunkManager().getChunkGenerator().locateStructure((ServerWorld) worldIn, StructureLocator.getStructureToLocate(ConfigHandler.eyesLocateStructure.toLowerCase()), playerIn.getBlockPos(), 100, false);
+                BlockPos blockpos = ((ServerWorld) worldIn).getChunkManager().getChunkGenerator().locateStructure((ServerWorld) worldIn, StructureLocator.getStructureToLocate(ConfigHandler.EYES_LOCATE_STRUCTURE.toLowerCase()), playerIn.getBlockPos(), 100, false);
                 if (blockpos != null) {
                     EyeOfEnderEntity eyeOfEnderEntity = new EyeOfEnderEntity(worldIn, playerIn.getX(), playerIn.getBodyY(0.5D), playerIn.getZ());
                     eyeOfEnderEntity.setItem(itemstack);
