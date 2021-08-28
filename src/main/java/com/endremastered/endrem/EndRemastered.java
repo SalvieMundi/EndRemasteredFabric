@@ -42,7 +42,6 @@ public class EndRemastered implements ModInitializer {
 	public void onInitialize() {
 		/* Miscellaneous */
 		LootInjection.init();
-		ConfigHandler.SetEyesLocateStructure(); //ghetto af
 		ConfigHandler.load();
 		CustomMap.addTradeToVillager();
 		/* Items & Blocks */

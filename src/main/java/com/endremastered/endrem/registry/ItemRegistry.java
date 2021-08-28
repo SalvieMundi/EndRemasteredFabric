@@ -28,6 +28,7 @@ public class ItemRegistry {
     /* Miscellaneous */
     public static final Item WITCH_PUPIL = new Item(new FabricItemSettings().group(EndRemastered.ENDREM_TAB));
     public static final Item END_CRYSTAL_FRAGMENT = new Item(new FabricItemSettings().group(EndRemastered.ENDREM_TAB));
+    public static final Item END_CRYSTAL_INGOT = new Item(new FabricItemSettings().group(EndRemastered.ENDREM_TAB));
 
     public static void registerItem(String itemName, Item item) {
         Registry.register(Registry.ITEM, EndRemastered.createIdentifier(itemName), item);
@@ -51,5 +52,6 @@ public class ItemRegistry {
 
         registerItem("witch_pupil", WITCH_PUPIL);
         registerItem("end_crystal_fragment", END_CRYSTAL_FRAGMENT);
+        registerItem("end_crystal_ingot", END_CRYSTAL_INGOT);
     }
 }

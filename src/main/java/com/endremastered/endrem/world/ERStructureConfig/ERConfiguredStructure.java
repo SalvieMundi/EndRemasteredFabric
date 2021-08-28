@@ -24,7 +24,7 @@ public class ERConfiguredStructure {
 
     public static void registerConfiguredStructures() {
         FabricStructureBuilder.create(EndRemastered.createIdentifier("end_castle"), END_CASTLE)
-                .step(GenerationStep.Feature.SURFACE_STRUCTURES)
+                .step(GenerationStep.Feature.UNDERGROUND_DECORATION)
                 .defaultConfig(270, 230, 542524543)
                 .adjustsSurface()
                 .register();

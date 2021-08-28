@@ -8,6 +8,7 @@ import net.minecraft.structure.MarginedStructureStart;
 import net.minecraft.structure.PoolStructurePiece;
 import net.minecraft.structure.StructureManager;
 import net.minecraft.structure.pool.StructurePoolBasedGenerator;
+import net.minecraft.tag.FluidTags;
 import net.minecraft.util.collection.Pool;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
@@ -62,7 +63,7 @@ public class AncientWitchHut extends StructureFeature<DefaultFeatureConfig> {
 
         // Now we test to make sure our structure is not spawning on water or other fluids.
         // You can do height check instead too to make it spawn at high elevations.
-        return topBlock.getFluidState().isEmpty(); //landHeight > 100;
+        return topBlock.getFluidState().isIn(FluidTags.WATER); //landHeight > 100;
     }
 
     public static class Start extends MarginedStructureStart<DefaultFeatureConfig> {
@@ -93,7 +94,8 @@ public class AncientWitchHut extends StructureFeature<DefaultFeatureConfig> {
                     false, // Special boundary adjustments for villages. It's... hard to explain. Keep this false and make your pieces not be partially intersecting.
                     // Either not intersecting or fully contained will make children pieces spawn just fine. It's easier that way.
                     true,
-                    heightLimitView);
+                    heightLimitView
+            );
         }
     }
 }

@@ -17,13 +17,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 //@Mixin(SpringFeature.class)
 //public class NoLavaInStructuresMixin {
 //    @Inject(
-//            method = "generate(Lnet/minecraft/world/gen/feature/util/FeatureContext;)Z",
+//            method = "generate",
 //            at = @At(value = "HEAD"),
 //            cancellable = true
 //    )
 //    private void noLavaInStructures(FeatureContext<SingleStateFeatureConfig> context, CallbackInfoReturnable<Boolean> cir) {
 //
-//        if (context.getConfig().state.getFluidState().isIn(FluidTags.LAVA) || context.getConfig().state.getFluidState().isIn(FluidTags.WATER)) {
+//        if (context.getConfig().state.getFluidState().isIn(FluidTags.LAVA)) {
 //            BlockPos.Mutable mutable = new BlockPos.Mutable();
 //            ChunkSectionPos chunkPos;
 //            for (Direction face : Direction.Type.HORIZONTAL) {

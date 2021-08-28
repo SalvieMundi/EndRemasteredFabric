@@ -19,7 +19,7 @@ public class ConfigHandler {
 
     public static boolean DISABLE_STRONGHOLD = true;
     public static boolean DISABLE_EYE_OF_ENDER = true;
-    public static String EYES_LOCATE_STRUCTURE = "";
+    public static String EYES_LOCATE_STRUCTURE = "endrem:end_gate";
     public static String MAP_LOCATES_STRUCTURE = "endrem:end_castle";
 
     public static void load() {
@@ -86,7 +86,7 @@ public class ConfigHandler {
             private Common() {
                 DISABLE_STRONGHOLD = true;
                 DISABLE_EYE_OF_ENDER = true;
-                EYES_LOCATE_STRUCTURE = "minecraft:stronghold";
+                EYES_LOCATE_STRUCTURE = "endrem:end_gate";
                 MAP_LOCATES_STRUCTURE = "endrem:end_castle";
             }
 
@@ -96,16 +96,6 @@ public class ConfigHandler {
                 this.EYES_LOCATE_STRUCTURE = EYES_LOCATE_STRUCTURE;
                 this.MAP_LOCATES_STRUCTURE = MAP_LOCATES_STRUCTURE;
             }
-        }
-    }
-
-    public static void SetEyesLocateStructure() {
-
-        if (FabricLoader.getInstance().isModLoaded("betterstrongholds")) {
-            EYES_LOCATE_STRUCTURE = "betterstrongholds:stronghold";
-        }
-        else {
-            EYES_LOCATE_STRUCTURE = "minecraft:stronghold";
         }
     }
 }
