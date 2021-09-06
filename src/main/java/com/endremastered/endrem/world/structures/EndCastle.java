@@ -65,12 +65,14 @@ public class EndCastle extends StructureFeature<DefaultFeatureConfig> {
         @Override
         public void init(DynamicRegistryManager registryManager, ChunkGenerator chunkGenerator, StructureManager manager, ChunkPos pos, Biome biome, DefaultFeatureConfig config, HeightLimitView world) {
 
+            BlockRotation rotation = BlockRotation.values()[this.random.nextInt(BlockRotation.values().length)];
+
 
             int x = pos.x * 16;
             int z = pos.z * 16;
             int y = chunkGenerator.getHeight(x, z, Heightmap.Type.WORLD_SURFACE_WG, world);
             BlockPos newPos = new BlockPos(x, y, z);
-            EndCastlePieces.addPieces(manager, this, newPos, random);
+            EndCastlePieces.start(manager, newPos, rotation, this.children);
             this.setBoundingBoxFromChildren();
         }
     }
