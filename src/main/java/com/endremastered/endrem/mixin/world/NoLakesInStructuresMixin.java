@@ -20,7 +20,7 @@ public class NoLakesInStructuresMixin {
     private void noLakesInStructures(FeatureContext<SingleStateFeatureConfig> context, CallbackInfoReturnable<Boolean> cir) {
         ChunkSectionPos chunkPos = ChunkSectionPos.from(context.getOrigin());
 
-        if (context.getWorld().getStructures(chunkPos, ERJigsawStructures.END_GATE).findAny().isPresent() || context.getWorld().getStructures(chunkPos, ERConfiguredStructure.END_CASTLE).findAny().isPresent()) {
+        if (/*context.getWorld().getStructures(chunkPos, ERJigsawStructures.END_GATE).findAny().isPresent() || */context.getWorld().getStructures(chunkPos, ERConfiguredStructure.END_CASTLE).findAny().isPresent()) {
             cir.setReturnValue(false);
             System.out.println("NO LAKE IN THE STRUCTURE");
         }

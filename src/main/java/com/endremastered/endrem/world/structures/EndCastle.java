@@ -40,7 +40,7 @@ public class EndCastle extends StructureFeature<DefaultFeatureConfig> {
         VerticalBlockSample columnOfBlocks = chunkGenerator.getColumnSample(centerOfChunk.getX(), centerOfChunk.getZ(), heightLimitView);
         BlockState topBlock = columnOfBlocks.getState(centerOfChunk.up(landHeight));
 
-        if (EndGate.getChunkDistanceFromSpawn(chunkPos.x, chunkPos.z) >= 125 && topBlock.getFluidState().isEmpty()) {
+        if (/*EndGate.getChunkDistanceFromSpawn(chunkPos.x, chunkPos.z) >= 125 && */topBlock.getFluidState().isEmpty()) {
             return true;
         }
         return false;

@@ -48,9 +48,9 @@ public class CustomMap {
         // fillExplorationMap
         FilledMapItem.fillExplorationMap((ServerWorld) world, stack);
         MapState.addDecorationsNbt(stack, structurePos, "+", MapIcon.Type.TARGET_X);
-        if (STRUCTURE_TO_LOCATE.get() == ERJigsawStructures.END_GATE){
+        /*if (STRUCTURE_TO_LOCATE.get() == ERJigsawStructures.END_GATE){
             stack.setCustomName(new TranslatableText("item.endrem.end_gate_map"));
-        } else if (STRUCTURE_TO_LOCATE.get() == ERConfiguredStructure.END_CASTLE) {
+        } else */if (STRUCTURE_TO_LOCATE.get() == ERConfiguredStructure.END_CASTLE) {
             stack.setCustomName(new TranslatableText("item.endrem.end_castle_map"));
         } else {
             stack.setCustomName(Text.of("Structure Map"));

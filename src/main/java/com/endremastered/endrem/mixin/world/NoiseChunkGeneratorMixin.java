@@ -31,9 +31,9 @@ public class NoiseChunkGeneratorMixin {
     private static Pool<SpawnSettings.SpawnEntry> getStructureSpawns(Biome biome, StructureAccessor accessor, SpawnGroup group, BlockPos pos){
 
         if (group == SpawnGroup.MONSTER) {
-            if (accessor.getStructureAt(pos, true, ERJigsawStructures.END_GATE).hasChildren()) {
+            /*if (accessor.getStructureAt(pos, true, ERJigsawStructures.END_GATE).hasChildren()) {
                 return ERJigsawStructures.END_GATE.getMonsterSpawns();
-            }
+            }*/
             if (accessor.getStructureAt(pos, true, ERConfiguredStructure.END_CASTLE).hasChildren()) {
                 return ERConfiguredStructure.END_CASTLE.getMonsterSpawns();
             }

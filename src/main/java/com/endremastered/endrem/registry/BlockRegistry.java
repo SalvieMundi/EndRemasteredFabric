@@ -14,6 +14,7 @@ public class BlockRegistry {
 
     public static final Block ANCIENT_PORTAL_FRAME = new AncientPortalFrame(FabricBlockSettings.of(Material.METAL).strength(-1.0F, 3600000.0F).dropsNothing());
     public static final Block END_CRYSTAL_ORE = new OreBlock(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(30.0F, 1200.0F), UniformIntProvider.create(3, 7));
+    public static final Block END_CRYSTAL_BLOCK = new OreBlock(AbstractBlock.Settings.of(Material.METAL).requiresTool().strength(30.0F, 1200.0F));
 
 
     public static void init() {
@@ -22,6 +23,9 @@ public class BlockRegistry {
 
         registerBlock("end_crystal_ore", END_CRYSTAL_ORE);
         registerBlockItem("end_crystal_ore", new BlockItem(END_CRYSTAL_ORE, new FabricItemSettings().group(EndRemastered.ENDREM_TAB)));
+
+        registerBlock("end_crystal_block", END_CRYSTAL_BLOCK);
+        registerBlockItem("end_crystal_block", new BlockItem(END_CRYSTAL_BLOCK, new FabricItemSettings().group(EndRemastered.ENDREM_TAB)));
     }
 
     public static void registerBlock(String blockName, Block block) {

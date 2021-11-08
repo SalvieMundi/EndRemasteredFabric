@@ -16,18 +16,18 @@ import net.minecraft.world.gen.feature.StructureFeature;
 
 public class ERJigsawStructures {
 
-    public static StructureFeature<DefaultFeatureConfig> END_GATE = new EndGate(DefaultFeatureConfig.CODEC);
+    //public static StructureFeature<DefaultFeatureConfig> END_GATE = new EndGate(DefaultFeatureConfig.CODEC);
     public static StructureFeature<DefaultFeatureConfig> ANCIENT_WITCH_HUT = new AncientWitchHut(DefaultFeatureConfig.CODEC);
 
 
     public static void setupAndRegisterStructureFeatures() {
-        /*END GATE*/
+        /*END GATE
         FabricStructureBuilder.create(EndRemastered.createIdentifier("end_gate"), END_GATE)
                 .step(GenerationStep.Feature.STRONGHOLDS)
                 .defaultConfig(new StructureConfig(270, 230, 324894322))
                 .superflatFeature(END_GATE.configure(FeatureConfig.DEFAULT))
                 .adjustsSurface()
-                .register();
+                .register(); */
 
         /*ANCIENT_WITCH_HUT*/
         FabricStructureBuilder.create(EndRemastered.createIdentifier("ancient_witch_hut"), ANCIENT_WITCH_HUT)

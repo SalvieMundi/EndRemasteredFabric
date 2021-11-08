@@ -23,7 +23,7 @@ public class DimensionCheck {
             if (!EndRemastered.whitelistedDimensions.contains(serverWorld.getRegistryKey().getValue().toString())) {
 
                 Map<StructureFeature<?>, StructureConfig> tempMap = new HashMap<>(serverWorld.getChunkManager().getChunkGenerator().getStructuresConfig().getStructures());
-                tempMap.keySet().remove(ERJigsawStructures.END_GATE);
+                //tempMap.keySet().remove(ERJigsawStructures.END_GATE);
                 tempMap.keySet().remove(ERConfiguredStructure.END_CASTLE);
                 tempMap.keySet().remove(ERJigsawStructures.ANCIENT_WITCH_HUT);
                 ((StructuresConfigAccessorMixin) serverWorld.getChunkManager().getChunkGenerator().getStructuresConfig()).setStructures(tempMap);

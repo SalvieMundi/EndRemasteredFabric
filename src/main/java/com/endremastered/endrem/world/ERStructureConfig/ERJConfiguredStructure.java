@@ -13,7 +13,7 @@ import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 
 public class ERJConfiguredStructure {
 
-    public static ConfiguredStructureFeature<?, ?> CONFIGURED_END_GATE = ERJigsawStructures.END_GATE.configure(DefaultFeatureConfig.DEFAULT);
+    //public static ConfiguredStructureFeature<?, ?> CONFIGURED_END_GATE = ERJigsawStructures.END_GATE.configure(DefaultFeatureConfig.DEFAULT);
 
     public static ConfiguredStructureFeature<?, ?> CONFIGURED_ANCIENT_WITCH_HUT = ERJigsawStructures.ANCIENT_WITCH_HUT.configure(DefaultFeatureConfig.DEFAULT);
 
@@ -21,7 +21,7 @@ public class ERJConfiguredStructure {
     public static void registerConfiguredStructures() {
         Registry<ConfiguredStructureFeature<?, ?>> registry = BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE;
 
-        Registry.register(registry, EndRemastered.createIdentifier("configured_end_gate"), CONFIGURED_END_GATE);
+        /*Registry.register(registry, EndRemastered.createIdentifier("configured_end_gate"), CONFIGURED_END_GATE);
         BiomeModifications.create(EndRemastered.createIdentifier("end_gate_addition"))
                 .add(ModificationPhase.ADDITIONS, BiomeSelectors.excludeByKey(BiomeKeys.OCEAN,
                         BiomeKeys.DEEP_OCEAN,
@@ -39,7 +39,7 @@ public class ERJConfiguredStructure {
                         BiomeKeys.FROZEN_RIVER
                 ), context -> {
                     context.getGenerationSettings().addBuiltInStructure(ERJConfiguredStructure.CONFIGURED_END_GATE);
-                });
+                });*/
 
         Registry.register(registry, EndRemastered.createIdentifier("configured_ancient_witch_hut"), CONFIGURED_ANCIENT_WITCH_HUT);
         BiomeModifications.create(EndRemastered.createIdentifier("ancient_witch_hut_addition"))
