@@ -9,6 +9,7 @@ import com.endremastered.endrem.properties.FrameProperties;
 import com.endremastered.endrem.registry.BlockRegistry;
 import com.endremastered.endrem.util.StructureLocator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.*;
 import net.minecraft.block.pattern.BlockPattern;
@@ -20,12 +21,15 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.item.Items;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.command.CommandManager;
+import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
-import net.minecraft.structure.MineshaftGenerator;
+import net.minecraft.block.EndPortalFrameBlock;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
@@ -36,7 +40,11 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class EyeItem extends Item {
@@ -55,6 +63,11 @@ public class EyeItem extends Item {
         World world = context.getWorld();
         BlockPos blockpos = context.getBlockPos();
         BlockState blockstate = world.getBlockState(blockpos);
+        double minX = 0.0;
+        double maxX = 0.0;
+        double minZ = 0.0;
+        double maxZ = 0.0;
+        int minY = 0;
 
         Boolean frameHasEye = false;
 
@@ -84,15 +97,29 @@ public class EyeItem extends Item {
 
                 if (blockpattern$patternhelper != null) {
                     BlockPos blockpos1 = blockpattern$patternhelper.getFrontTopLeft().add(-3, 0, -3);
-
+                    minX = blockpos1.getX();
+                    maxX = blockpos1.getX() + 3;
+                    minZ = blockpos1.getZ();
+                    maxZ = blockpos1.getZ() + 3;
+                    minY = blockpos1.getY();
                     for (int i = 0; i < 3; ++i) {
-                        for (int j = 0; j < 3; ++j) {
-                            world.setBlockState(blockpos1.add(i, 0, j), Blocks.END_PORTAL.getDefaultState(), 2);
-                        }
-                    }
-
+                		for (int j = 0; j < 3; ++j) {
+                			world.setBlockState(blockpos1.add(i, 0, j), Blocks.END_PORTAL.getDefaultState(), 2);
+                		}
+                	}
                     world.syncGlobalEvent(1038, blockpos1.add(1, 0, 1), 0);
+                    
+                    if (FabricLoader.getInstance().isModLoaded("endrem")) {
+                    	ServerCommandSource playerSource = context.getPlayer().getCommandSource().withLevel(2)/*.withSilent()*/;
+                    	CommandManager commandManager = world.getServer().getCommandManager();
+                    	
+                    	commandManager.execute(playerSource, "/portal make_portal 3 3 minecraft:the_end 0 160 0");
+                    	commandManager.execute(playerSource, "/execute as @e[nbt={dimensionTo:\"minecraft:the_end\"},distance=0..25,limit=1] run portal set_portal_nbt {Pos:[" + (minX + ((maxX-minX)/2.0)) + "," + (double)minY + "," + (minZ + ((maxZ-minZ)/2.0) + "]}"));
+                    	commandManager.execute(playerSource, "/execute as @e[nbt={dimensionTo:\"minecraft:the_end\"},distance=0..25,limit=1] run portal set_portal_nbt {axisWX:0.0d,axisHX:-90.0d,axisWY:0.0d,axisHY:0.0d,axisWZ:-90.0d,axisHZ:0.0d}");
+                    	commandManager.execute(playerSource, "/fill " + (int)minX + " " + minY + " " + (int)minZ + " " + (int)maxX + " " + (minY+1) + " " + (int)maxZ + " minecraft:air replace minecraft:end_portal");
+                    }
                 }
+                
                 return ActionResult.CONSUME;
             }
             return ActionResult.PASS;
