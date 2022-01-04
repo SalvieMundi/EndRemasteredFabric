@@ -11,6 +11,7 @@ import net.minecraft.util.Identifier;
 public class LootInjection {
 
     /* Chests */
+	private static final Identifier BASTION_LOOT_TABLE_ID = new Identifier("minecraft", "chests/bastion_other");
     private static final Identifier MINESHAFT_CHEST_LOOT_TABLE_ID = new Identifier("minecraft", "chests/abandoned_mineshaft");
     private static final Identifier BURIED_TREASURE_CHEST_LOOT_TABLE_ID = new Identifier("minecraft", "chests/buried_treasure");
     private static final Identifier DESERT_PYRAMID_CHEST_LOOT_TABLE_ID = new Identifier("minecraft", "chests/desert_pyramid");
@@ -36,7 +37,20 @@ public class LootInjection {
                         .rolls(ConstantLootNumberProvider.create(1.0F)) // Same as "rolls": 1 in the loot table json
                         .with(ItemEntry.builder(ItemRegistry.ROGUE_EYE));
                 table.pool(poolBuilder);
-            } else if (OUTPOST_CHEST_LOOT_TABLE_ID.equals(id)) {
+            } 
+            else if (BASTION_LOOT_TABLE_ID.equals(id)) {
+                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootNumberProvider.create(1.0F))
+                        .conditionally(RandomChanceLootCondition.builder(0.25F))
+                        .with(ItemEntry.builder(ItemRegistry.END_CRYSTAL_FRAGMENT));
+                table.pool(poolBuilder);
+                poolBuilder = FabricLootPoolBuilder.builder()
+		                .rolls(ConstantLootNumberProvider.create(1.0F))
+		                .conditionally(RandomChanceLootCondition.builder(0.1F))
+		                .with(ItemEntry.builder(ItemRegistry.END_CRYSTAL_INGOT));
+                table.pool(poolBuilder);
+            }
+            else if (OUTPOST_CHEST_LOOT_TABLE_ID.equals(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootNumberProvider.create(1.0F))
                         .conditionally(RandomChanceLootCondition.builder(0.8F))

@@ -10,7 +10,8 @@
     "accessor.StructuresConfigAccessorMixin",
     "world.ChunkGeneratorMixin",
     "world.NoiseChunkGeneratorMixin",
-    "world.NoLakesInStructuresMixin"
+    "world.NoLakesInStructuresMixin",
+    "world.NoSpringsInStructuresMixin"
   ],
   "client": [
   ],
