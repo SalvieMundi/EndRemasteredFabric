@@ -114,7 +114,7 @@ public class EyeItem extends Item {
                     	CommandManager commandManager = world.getServer().getCommandManager();
                     	
                     	commandManager.execute(playerSource, "/portal make_portal 3 3 minecraft:the_end 0 160 0");
-                    	commandManager.execute(playerSource, "/execute as @e[nbt={dimensionTo:\"minecraft:the_end\"},distance=0..25,limit=1] run portal set_portal_nbt {Pos:[" + (minX + ((maxX-minX)/2.0)) + "," + (double)minY + "," + (minZ + ((maxZ-minZ)/2.0) + "]}"));
+                    	commandManager.execute(playerSource, "/execute as @e[nbt={dimensionTo:\"minecraft:the_end\"},distance=0..25,limit=1] run portal set_portal_nbt {Pos:[" + (minX + ((maxX-minX)/2.0)) + "," + ((double)minY+0.1) + "," + (minZ + ((maxZ-minZ)/2.0) + "]}"));
                     	commandManager.execute(playerSource, "/execute as @e[nbt={dimensionTo:\"minecraft:the_end\"},distance=0..25,limit=1] run portal set_portal_nbt {axisWX:0.0d,axisHX:-90.0d,axisWY:0.0d,axisHY:0.0d,axisWZ:-90.0d,axisHZ:0.0d}");
                     	commandManager.execute(playerSource, "/execute as @e[nbt={dimensionTo:\"minecraft:the_end\"},distance=0..25,limit=1] run portal set_portal_nbt {commandsOnTeleported:[\"/effect give @s minecraft:slow_falling 12\"]}");
                     	commandManager.execute(playerSource, "/fill " + (int)minX + " " + minY + " " + (int)minZ + " " + (int)maxX + " " + (minY+1) + " " + (int)maxZ + " minecraft:air replace minecraft:end_portal");

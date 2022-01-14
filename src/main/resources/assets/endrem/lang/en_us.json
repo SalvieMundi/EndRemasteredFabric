@@ -1,40 +1,39 @@
-#PARSE_ESCAPES
 {
   "item.endrem.old_eye": "Old Eye",
-  "item.endrem.old_eye.description": "Legends say this eye once belonged to \none of the great Sandworms",
+  "item.endrem.old_eye.description": "Legends say this eye once belonged to one of the great Sandworms",
 
   "item.endrem.rogue_eye": "Rogue Eye",
-  "item.endrem.rogue_eye.description": "This eye is believed to have given our \nancestors the knowledge of Redstone",
+  "item.endrem.rogue_eye.description": "This eye is believed to have given our ancestors the knowledge of Redstone",
 
   "item.endrem.nether_eye": "Nether Eye",
-  "item.endrem.nether_eye.description": "It was lost by a demon in the battle \nbetween the Aether and the Nether",
+  "item.endrem.nether_eye.description": "It was lost by a demon in the battle between the Aether and the Nether",
 
   "item.endrem.cold_eye": "Cold Eye",
-  "item.endrem.cold_eye.description": "One of the last artifacts left behind by \nthe Iceologers before they all suddenly vanished \nfrom the world",
+  "item.endrem.cold_eye.description": "One of the last artifacts left behind by the Iceologers before they all suddenly vanished from the world",
 
   "item.endrem.magical_eye": "Magical Eye",
-  "item.endrem.magical_eye.description": "Without this eye, the Evoker has \nno power",
+  "item.endrem.magical_eye.description": "Without this eye, the Evoker has no power",
 
   "item.endrem.black_eye": "Black Eye",
-  "item.endrem.black_eye.description": "Pirates say it gave sight to the legendary \nBlack eye",
+  "item.endrem.black_eye.description": "Pirates say it gave sight to the legendary Black eye",
 
   "item.endrem.lost_eye": "Lost Eye",
-  "item.endrem.lost_eye.description": "It is told that it was forged by the first \nblacksmiths of time",
+  "item.endrem.lost_eye.description": "It is told that it was forged by the first blacksmiths of time",
 
   "item.endrem.wither_eye": "Wither Eye",
-  "item.endrem.wither_eye.description": "Has witnessed destruction. Maybe it also witnessed \nyour stuff disappear",
+  "item.endrem.wither_eye.description": "Has witnessed destruction. Maybe it also witnessed your stuff disappear",
 
   "item.endrem.guardian_eye": "Guardian Eye",
-  "item.endrem.guardian_eye.description": "It has seen many warriors drown into the \ndepths of the sea",
+  "item.endrem.guardian_eye.description": "It has seen many warriors drown into the depths of the sea",
 
   "item.endrem.end_crystal_eye": "End Crystal Eye",
-  "item.endrem.end_crystal_eye.description": "It is believed to hold a fragment of \nthe Enderdragon Soul",
+  "item.endrem.end_crystal_eye.description": "It is believed to hold a fragment of the Enderdragon Soul",
 
   "item.endrem.corrupted_eye": "Corrupted Eye",
-  "item.endrem.corrupted_eye.description": "The eye of a greedy king that faded \nin solitude. Legend says it will bring infinite \nfortune to its owner",
+  "item.endrem.corrupted_eye.description": "The eye of a greedy king that faded in solitude. Legend says it will bring infinite fortune to its owner",
 
   "item.endrem.witch_eye": "Witch Eye",
-  "item.endrem.witch_eye.description": "This pupil is believed to have seen the \nancient brewing recipes that were lost in time.",
+  "item.endrem.witch_eye.description": "This pupil is believed to have seen the ancient brewing recipes that were lost in time.",
 
   "item.endrem.end_crystal_fragment": "End Crystal Fragment",
 
